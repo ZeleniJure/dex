@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for dex-login on 2023-04-29T09:24:48+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "dex-login"
+primary_region = "ams"
+
+
+[env]
+  DEX_ISSUER="https://dex-login.fly.dev/dex"
+
+[http_service]
+  internal_port = 5556
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+
+[checks]
+  [checks.alive]
+    type = "tcp"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"
